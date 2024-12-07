@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron text-center bg-primary text-white py-4">
+        <h1>{{ player.name }}</h1>
+        <p>{{ player.position }}</p>
+    </div>
+
+    <div class="player-profile">
+        <h2>About {{ player.name }}</h2>
+        <p>{{ player.biography }}</p>
+
+        <h3>Statistics</h3>
+        <ul>
+            <li>Goals: {{ player.goals }}</li>
+            <li>Assists: {{ player.assists }}</li>
+            <li>Appearances: {{ player.appearances }}</li>
+        </ul>
+
+        <h3>Career Highlights</h3>
+        <ul>
+            {% for highlight in player.highlights %}
+            <li>{{ highlight.year }} - {{ highlight.description }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Gallery</h3>
+        <div class="gallery">
+            {% for photo in player.photos %}
+            <img src="{{ photo.url }}" alt="{{ photo.caption }}">
+            {% endfor %}
+        </div>
+
+        <h3>Latest News</h3>
+        <ul>
+            {% for news in player.news %}
+            <li><a href="{{ news.url }}">{{ news.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

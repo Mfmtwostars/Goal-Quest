@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Interviews & Features</h2>
+    <div class="interview-list">
+        {% for interview in interviews %}
+        <div class="interview-item">
+            <h3><a href="{% url 'interview_detail' interview.id %}">{{ interview.title }}</a></h3>
+            <p>{{ interview.published_date }}</p>
+            <p><strong>Interviewee:</strong> {{ interview.interviewee }}</p>
+            {% if interview.image %}
+            <img src="{{ interview.image.url }}" alt="{{ interview.title }}" class="interview-image">
+            {% endif %}
+            <p>{{ interview.content|truncatewords:30 }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

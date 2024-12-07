@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container" style="margin: 20px auto; max-width: 900px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <div class="match-header text-center" style="margin-bottom: 20px;">
+        <h2>{{ match.home_team }} vs {{ match.away_team }}</h2>
+        <p><strong>Date:</strong> {{ match.date }}</p>
+        <p><strong>Venue:</strong> {{ match.venue }}</p>
+        <div class="team-logos" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+            <img src="{% static 'assets/images.jpg' %}" alt="{{ match.home_team }} Logo" style="max-width: 100px; border-radius: 8px;">
+            <img src="{% static 'assets/images.png' %}" alt="{{ match.away_team }} Logo" style="max-width: 100px; border-radius: 8px;">
+        </div>
+    </div>
+
+    {% if match.is_live %}
+    <div class="live-score text-center" style="margin-bottom: 20px;">
+        <p><strong>Score:</strong> <span id="home-team-score">{{ match.home_team_score }}</span> - <span id="away-team-score">{{ match.away_team_score }}</span></p>
+        <script>
+            function fetchLiveScores() {
+                const matchId = {{ match.id }};
+                fetch(`/api/live_scores/${matchId}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('home-team-score').textContent = data.home_team_score;
+                        document.getElementById('away-team-score').textContent = data.away_team_score;
+                    })
+                    .catch(error => console.error('Error fetching live scores:', error));
+            }
+
+            setInterval(fetchLiveScores, 30000); // Fetch live scores every 30 seconds
+        </script>
+    </div>
+    {% endif %}
+
+    <div class="match-details" style="margin-bottom: 20px;">
+        <h3>Match Details</h3>
+        <h4>Team Line-ups:</h4>
+        <form method="post" class="lineup-form" style="margin-bottom: 20px;">
+            {% csrf_token %}
+            {{ lineup_form.as_p }}
+            <button type="submit" class="btn btn-primary" style="background-color: #007BFF; border-color: #007BFF;">Update Line-ups</button>
+        </form>
+
+        <h4>Player Highlights</h4>
+        <form method="post" class="keyplayer-forms" style="margin-bottom: 20px;">
+            {% csrf_token %}
+            {% for form in keyplayer_forms %}
+                {{ form.as_p }}
+            {% endfor %}
+            <button type="submit" class="btn btn-primary" style="background-color: #007BFF; border-color: #007BFF;">Update Key Players</button>
+        </form>
+
+        <h4>Historical Statistics</h4>
+        <p>Previous encounters between these teams, win/loss records, etc.</p>
+    </div>
+
+    <div class="fan-interaction">
+        <h3>Fan Comments</h3>
+        <div class="comments-section" style="margin-bottom: 20px;">
+            {% for comment in comments %}
+                <p><strong>{{ comment.author }}:</strong> {{ comment.text }}</p>
+            {% endfor %}
+        </div>
+        <form method="post" class="comment-form" style="margin-bottom: 20px;">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-primary" style="background-color: #007BFF; border-color: #007BFF;">Add Comment</button>
+        </form>
+
+        <h3>Countdown Timer</h3>
+        <div id="countdown-timer" style="margin-bottom: 20px;"></div>
+        <script>
+            function countdownToMatch() {
+                const matchDate = new Date("{{ match.date|date:'Y-m-d H:i:s' }}").getTime();
+                const now = new Date().getTime();
+                const distance = matchDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown-timer").innerHTML =
+                    days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown-timer").innerHTML = "MATCH STARTED";
+                }
+            }
+
+            const x = setInterval(countdownToMatch, 1000);
+        </script>
+    </div>
+</div>
+
+{% endblock %}

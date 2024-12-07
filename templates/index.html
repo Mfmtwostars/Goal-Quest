@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="background-image: url('{% static 'assets/download.jpg' %}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh;">
+    <!-- Hero Section -->
+    <div class="jumbotron text-center text-white py-5" style="background: rgba(0, 0, 0, 0.5);">
+        <h1 class="display-4">Chasing Glory, One Goal at a Time!</h1>
+        <p class="lead">Welcome to Goal Quest</p>
+        <a href="#" class="btn btn-light btn-lg">Discover More</a>
+    </div>
+
+    <!-- Featured Content -->
+    <div class="row text-center mt-4">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'latest_news' %}" class="text-dark">Latest News</a></h5>
+                    <p class="card-text">Stay updated with the latest soccer news.</p>
+                    <a href="{% url 'latest_news' %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'upcoming_matches' %}" class="text-dark">Upcoming Matches</a></h5>
+                    <p class="card-text">Don't miss any of the action!</p>
+                    <a href="{% url 'upcoming_matches' %}" class="btn btn-primary">View Schedule</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'special_features' %}" class="text-dark">Special Features</a></h5>
+                    <p class="card-text">Check out our exclusive content.</p>
+                    <a href="{% url 'special_features' %}" class="btn btn-primary">Explore</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>{{ article.title }}</h2>
+    <p><strong>Author:</strong> {{ article.author }}</p>
+    <p><strong>Published on:</strong> {{ article.published_date }}</p>
+    {% if article.image %}
+    <img src="{{ article.image.url }}" alt="{{ article.title }}" class="news-image">
+    {% endif %}
+    <div class="news-content">
+        {{ article.content }}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px;">
+    <h2 style="color: #007bff;">Frequently Asked Questions (FAQ)</h2>
+    <p>Here you'll find answers to the most common questions our users ask.</p>
+    
+    <h3 style="color: #007bff;">General Questions</h3>
+    <h4>1. What is Goal Quest?</h4>
+    <p>Goal Quest is an online platform dedicated to soccer enthusiasts, providing the latest news, live match updates, player profiles, special features, and more.</p>
+    
+    <h4>2. How can I create an account on Goal Quest?</h4>
+    <p>You can create an account by clicking on the "Sign Up" button on our homepage and following the registration process.</p>
+    
+    <h4>3. Is Goal Quest free to use?</h4>
+    <p>Yes, Goal Quest offers free access to most of its content. However, we may offer premium features or merchandise that require payment.</p>
+
+    <h3 style="color: #007bff;">Account and Profile</h3>
+    <h4>4. How do I reset my password?</h4>
+    <p>If you've forgotten your password, click on the "Forgot Password" link on the login page and follow the instructions to reset it.</p>
+
+    <h4>5. How do I update my profile information?</h4>
+    <p>You can update your profile information by logging into your account and navigating to the "Profile" section in the account settings.</p>
+
+    <h4>6. Can I delete my account?</h4>
+    <p>Yes, you can delete your account by contacting our support team at support@goalquest.com.</p>
+
+    <h3 style="color: #007bff;">Features and Usage</h3>
+    <h4>7. How do I stay updated with the latest news?</h4>
+    <p>You can stay updated by visiting our "Latest News" section or subscribing to our newsletter.</p>
+
+    <h4>8. How can I watch live match updates on Goal Quest?</h4>
+    <p>Visit the "Live Matches" section on our website to see real-time updates, scores, and commentary.</p>
+
+    <h4>9. What kind of special features does Goal Quest offer?</h4>
+    <p>Goal Quest offers exclusive interviews, behind-the-scenes content, in-depth analysis, and player spotlights.</p>
+
+    <h3 style="color: #007bff;">Shopping and Orders</h3>
+    <h4>10. How do I place an order in the Goal Quest Shop?</h4>
+    <p>Browse our shop, select the items you want to purchase, and proceed to checkout. Follow the instructions to complete your order.</p>
+
+    <h4>11. What payment methods are accepted?</h4>
+    <p>We accept major credit cards, PayPal, and other secure payment methods.</p>
+
+    <h4>12. How can I track my order?</h4>
+    <p>After placing an order, you will receive a confirmation email with a tracking number. You can use this number to track your order on our website.</p>
+
+    <h3 style="color: #007bff;">Support and Assistance</h3>
+    <h4>13. How can I contact Goal Quest support?</h4>
+    <p>You can contact our support team by using the contact form on our website or emailing us at support@goalquest.com.</p>
+
+    <h4>14. Where can I find the Privacy Policy and Terms of Service?</h4>
+    <p>You can find our Privacy Policy <a href="{% url 'privacy' %}">here</a> and Terms of Service <a href="{% url 'terms' %}">here</a> </p>
+
+    <h4>15. How can I submit feedback or suggestions?</h4>
+    <p>We value your feedback! You can submit your suggestions through our contact form or by emailing feedback@goalquest.com.</p>
+</div>
+{% endblock %}

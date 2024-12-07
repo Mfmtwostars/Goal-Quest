@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h2>Upcoming Matches</h2>
+    <ul class="list-group">
+        {% for match in upcoming_matches %}
+        <li class="list-group-item">
+            <a href="{% url 'match_detail' match.id %}">{{ match.home_team }} vs {{ match.away_team }} - {{ match.date }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

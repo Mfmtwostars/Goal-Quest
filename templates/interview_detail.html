@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>{{ interview.title }}</h2>
+    <p><strong>Author:</strong> {{ interview.author }}</p>
+    <p><strong>Published on:</strong> {{ interview.published_date }}</p>
+    <p><strong>Interviewee:</strong> {{ interview.interviewee }}</p>
+    {% if interview.image %}
+    <img src="{{ interview.image.url }}" alt="{{ interview.title }}" class="interview-image">
+    {% endif %}
+    <div class="interview-content">
+        {{ interview.content }}
+    </div>
+</div>
+{% endblock %}

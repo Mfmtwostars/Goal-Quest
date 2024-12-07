@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron text-center bg-secondary text-white py-4">
+        <h1>Support Your Team</h1>
+        <p>Enter your details to support the team financially</p>
+    </div>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Support Team</button>
+    </form>
+</div>
+{% endblock %}

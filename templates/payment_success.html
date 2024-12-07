@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron text-center bg-success text-white py-4">
+        <h1>Payment Successful</h1>
+        <p>Thank you for supporting the team!</p>
+        <pre>{{ response|safe }}</pre>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="container">
+    <h2>Latest News</h2>
+    <div class="news-list">
+        {% if news_articles %}
+            {% for article in news_articles %}
+            <div class="news-item">
+                <h3><a href="{% url 'news_detail' article.id %}">{{ article.title }}</a></h3>
+                <p><strong>Author:</strong> {{ article.author }}</p>
+                <p><strong>Published on:</strong> {{ article.published_date }}</p>
+                {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.title }}" class="news-image">
+                {% endif %}
+                <p>{{ article.content|truncatewords:30 }}</p>
+                <p><strong>Tags:</strong> {% for tag in article.tags.all %}{{ tag.name }} {% endfor %}</p>
+                <p><a href="{% url 'news_detail' article.id %}">Read more...</a></p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No news articles found.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

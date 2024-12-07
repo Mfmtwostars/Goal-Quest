@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="jumbotron text-center bg-secondary text-white py-4">
+        <h1>Teams</h1>
+        <p>Explore all the teams</p>
+        <a href="{% url 'add_team' %}" class="btn btn-primary">Add New Team</a>
+    </div>
+
+    <div class="row">
+        {% for team in teams %}
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'team_profile' team.id %}">{{ team.name }}</a></h5>
+                    <p class="card-text">{{ team.slogan }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

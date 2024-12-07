@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5" style="background-color: #f8f9fa; padding: 20px; border-radius: 8px;">
+    <h2 style="color: #007bff;">Support</h2>
+    <p>At Goal Quest, we are dedicated to providing excellent support to our users. If you have any questions, issues, or need assistance, please feel free to reach out to us through the following methods:</p>
+    
+    <h3 style="color: #007bff;">1. Contact Form</h3>
+    <p>Use our <a href="{% url 'contact' %}" style="color: #007bff;">contact form</a> to submit your inquiries or report any issues. Our support team will respond as soon as possible.</p>
+
+    <h3 style="color: #007bff;">2. Email</h3>
+    <p>Send us an email at <a href="mailto:support@goalquest.com" style="color: #007bff;">support@goalquest.com</a> and our team will get back to you shortly.</p>
+
+    <h3 style="color: #007bff;">3. Frequently Asked Questions (FAQ)</h3>
+    <p>Check out our <a href="{% url 'faq' %}" style="color: #007bff;">FAQ page</a> for answers to common questions and solutions to common issues.</p>
+</div>
+{% endblock %}

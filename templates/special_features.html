@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Special Features</h2>
+    <ul>
+        {% for feature in feature_list %}
+            <li>
+                <h3>{{ feature.title }}</h3>
+                <p>{{ feature.content }}</p>
+                <p><small>{{ feature.date }}</small></p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

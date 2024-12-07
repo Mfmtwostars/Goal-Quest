@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Upcoming Matches</h2>
+    <ul>
+        {% for match in match_list %}
+            <li>
+                <h3>{{ match.home_team }} vs {{ match.away_team }}</h3>
+                <p><strong>Date:</strong> {{ match.date }}</p>
+                <p><strong>Venue:</strong> {{ match.venue }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

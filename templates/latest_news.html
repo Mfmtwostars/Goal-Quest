@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2>Latest News</h2>
+    <ul>
+        {% for news in news_list %}
+            <li>
+                <h3>{{ news.title }}</h3>
+                <p>{{ news.content }}</p>
+                <p><small>{{ news.date }}</small></p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

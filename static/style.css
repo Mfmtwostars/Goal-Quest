@@ -1,0 +1,41 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.jumbotron {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    min-height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: rgb(228, 214, 214);
+    backdrop-filter: blur(10px);
+}
+.footer {
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
+.footer .container {
+    padding: 10px;
+}
+.footer h5 {
+    font-size: 1rem;
+}
+.footer .btn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
